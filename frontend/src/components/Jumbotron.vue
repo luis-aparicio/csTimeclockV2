@@ -37,6 +37,9 @@ methods: {
     updateCurrentTime() {
         this.currentMoment = moment();
         this.currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+    },
+    async getUsers() {
+      let response = await this.$http.get("/user");
     }
 },
 created() {
@@ -61,15 +64,9 @@ created() {
     url("../assets/hero.png")
       center;
     margin-top: -6rem;
-    height: 25rem;
+    background-position: bottom left;
     background-size: cover;
     color: white;
-    
-
-    box-shadow: 
-    0 0 60px 30px rgba(17, 0, 255, 0.418),
-    0 0 100px 60px rgb(255, 255, 255), 
-    0 0 140px 90px rgba(255, 0, 0, 0.315); 
   }
   .header {
     font-family: 'Harlow Solid LET Plain:1.0';
