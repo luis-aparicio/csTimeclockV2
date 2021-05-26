@@ -11,16 +11,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-<<<<<<< HEAD
-    "mongoose": "^5.12.9",
-    "netlify-lambda": "^2.0.7",
-    "serverless-http": "^2.7.0"
-  },
-  "scripts": {
-    "start": "NODE_ENV=development& ./node_modules/.bin/netlify-lambda serve src",
-    "build": "NODE_ENV=production& ./node_modules/.bin/netlify-lambda build src"
-=======
     "mongoose": "^5.12.9"
->>>>>>> parent of 0a9e23c (deploy)
   }
 }
