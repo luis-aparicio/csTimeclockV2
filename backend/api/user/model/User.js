@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  first: {
+  name: {
       type: String,
-      required: [true,"No First Name..."]
-  },
-  last: {
-      type: String,
-      required: [true,"No Last Name..."]
+      required: [true,"No Name..."]
   },
   state: {
-      type: Boolean,
+      type: String,
       required: true
   },
   logs: {

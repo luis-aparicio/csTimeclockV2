@@ -2,6 +2,9 @@ const express = require('express')
 const config = require("./config/db")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
+const cors = require('cors')
+
+
 const app = express()
 const port = 3000
 
@@ -18,7 +21,7 @@ mongoose
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use(cors());
 const userRoutes = require("./api/user/route/user");
 app.use("/user", userRoutes);
 

@@ -4,9 +4,8 @@ const Log = require("../model/Log")
 exports.registerNewUser = async (req, res) => {
     try {
       const user = new User({
-        first: req.body.first, 
-        last:  req.body.last,
-        state: false
+        name: req.body.name,
+        state: "danger"
       });
       let data = await user.save();
       res.status(201).json({data});
@@ -27,6 +26,24 @@ exports.getAllUsers = async (req,res) => {
     }).catch((error) => {
       res.status(500).send(error);
     })
+}
+
+exports.updateUser = async (req, res) => {
+  try {
+      const _id = req.body._id;
+      const user = await User.findOne({_id});
+      if (user == 0) {
+        res.status(401).json({ err: "User not found"});
+      } else {
+      user.logs = req.body.logs;
+      user.state = req.body.state;
+      let data = await user.save();
+      res.status(200).json(data)
+              }
+  }
+  catch (err) {
+      res.status(400).json({err: err}); 
+  }
 }
 
 exports.setLog = async (req, res) => {
@@ -101,9 +118,8 @@ exports.updateLog = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
     try {
-        let data = User.findByIdAndDelete(req.body.userID, function (err) {
+        let data = User.findByIdAndDelete(req.body._id, function (err) {
             if(err) console.log(err);
-            console.log("Successful deletion");
           });
           res.status(200).json(data);
     }
