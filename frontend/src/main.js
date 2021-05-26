@@ -12,7 +12,7 @@ import VuePapaParse from 'vue-papa-parse'
 Vue.config.productionTip = false
 
 const base = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "https://cardinal-backend.herokuapp.com"
 });
 
 Vue.prototype.$http = base;
