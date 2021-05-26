@@ -3,7 +3,8 @@ const config = require("./config/db")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const cors = require('cors')
-
+const dotenv = require('dotenv')
+dotenv.config();
 
 const app = express()
 const port = 3000
@@ -11,7 +12,7 @@ const port = 3000
 mongoose.set("useCreateIndex", true);
 mongoose.set('useFindAndModify', false);
 mongoose
-  .connect(config.database, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.database, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Database is connected");
   })
