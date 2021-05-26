@@ -7,7 +7,6 @@ const dotenv = require('dotenv')
 dotenv.config();
 
 const app = express()
-const port = 3000
 
 mongoose.set("useCreateIndex", true);
 mongoose.set('useFindAndModify', false);
@@ -26,6 +25,5 @@ app.use(cors());
 const userRoutes = require("./api/user/route/user");
 app.use("/user", userRoutes);
 
-app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
